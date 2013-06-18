@@ -5,8 +5,6 @@ Itens = new Meteor.Collection("itens")
   slug = slug.replace /[^\w-]+/g,'_'
 
 if Meteor.isClient	
-  
-	
   $.fn.yellowFade = () ->
     this.animate( { backgroundColor: "#ffffcc" }, 1 ).animate( { backgroundColor: "#ffffff" }, 1500 )
 
@@ -45,14 +43,15 @@ if Meteor.isClient
       FB.XFBML.parse(blockquote.get(0))
     catch e
 
-  Template.itens.events({    
-    'click .votarIdeia': (e) ->     
+  Template.itens.events({
+    'click .votarIdeia': (e) ->
      e.preventDefault()
-     if Session.get(this._id) != "clicked"   
+
+     if Session.get(this._id) != "clicked"
        Itens.update(this._id, {$inc: {votos: 1}})
-       Session.set(this._id,"clicked")
+       Session.set(this._id, "clicked")
      else
-       alert "Apenas 1 voto por proposta é aceito"         
+       alert "Apenas 1 voto por proposta é aceito"
   })
 
   Meteor.startup( () ->
