@@ -1,8 +1,12 @@
 Itens = new Meteor.Collection("itens")
 
+@remove = (id) ->
+  Itens.remove(id)
+
 if Meteor.isClient
   $.fn.yellowFade = () ->
     this.animate( { backgroundColor: "#ffffcc" }, 1 ).animate( { backgroundColor: "#ffffff" }, 1500 )
+
 
   Template.itens.itens = () ->
     Itens.find({}, {sort: {votos: -1, titulo: 1}})
@@ -34,6 +38,11 @@ if Meteor.isClient
 
         titulo = $("#titulo").val()
         descricao = $("#descricao").val()
+
+        if not titulo
+          alert "Preencha pelo menos o título"
+          $("#titulo").focus()
+          return
 
         Itens.insert({titulo: titulo, descricao: descricao, votos: 1})
 
