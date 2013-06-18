@@ -1,14 +1,23 @@
 Itens = new Meteor.Collection("itens")
 
-@remove = (id) ->
-  Itens.remove(id)
+@convertToSlug = (url) ->
+  slug = url.toLowerCase()
+  slug = slug.replace /[^\w-]+/g,'_'
 
 if Meteor.isClient
   $.fn.yellowFade = () ->
     this.animate( { backgroundColor: "#ffffcc" }, 1 ).animate( { backgroundColor: "#ffffff" }, 1500 )
 
+  @remove = (id) ->
+    Itens.remove(id)
+
   Template.itens.itens = () ->
     Itens.find({}, {sort: {votos: -1, titulo: 1}})
+
+  Template.item.helpers {
+    slug: (url)->
+      convertToSlug(url)
+  }
 
   Template.item.rendered = () ->
     html = ""
@@ -20,14 +29,19 @@ if Meteor.isClient
       html += "<br/>" if this.data.descricao
       html += "<strong>Sugestão:</strong><p>#{this.data.sugestao}</p>"
 
-    $("blockquote[data-ideia-id='#{this.data._id}']").popover({
+    blockquote = $("blockquote[data-ideia-id='#{this.data._id}']")
+
+    blockquote.popover({
       placement: "top",
       trigger: "hover",
       html: true,
       content: html
     })
 
-    $("blockquote[data-ideia-id='#{this.data._id}']").yellowFade()
+    blockquote.yellowFade()
+    try
+      FB.XFBML.parse(blockquote.get(0))
+    catch e
 
   Template.itens.events({
     'click .votarIdeia': (e) ->

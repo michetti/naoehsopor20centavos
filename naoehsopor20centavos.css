@@ -49,6 +49,15 @@ div.popover {
   left: auto !important;
 }
 
+blockquote small {
+  display: inline;
+}
+
+div.fb-like {
+  top: 10px;
+  left: 15px;
+}
+
 @media (max-width: 979px) {
   .carousel .item {
     height: 500px;
