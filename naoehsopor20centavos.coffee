@@ -30,13 +30,30 @@ if Meteor.isClient
 
   Template.itens.events({
     'click .votarIdeia': (e) ->
-     e.preventDefault()
+      e.preventDefault()
+      id = this._id
+      key = "votou_#{id}"
 
-     if Session.get(this._id) != "clicked"
-       Itens.update(this._id, {$inc: {votos: 1}})
-       Session.set(this._id, "clicked")
-     else
-       alert "Apenas 1 voto por proposta é aceito"
+      if Session.get(key) != true
+        Itens.update(id, {$inc: {votos: 1}})
+        Session.set(key, true)
+      else
+        alert "Apenas 1 voto por proposta é aceito"
+
+    'click .detalhesButton': (e) ->
+      e.preventDefault()
+      id = this._id
+      key = "detalhe_visivel_#{id}"
+      blockquote = $("blockquote[data-ideia-id='#{id}']")
+
+      if Session.get(key) == true
+        $(".detalhesButton", blockquote).html("Mostrar Detalhes")
+        $(".detalhes", blockquote).addClass("hidden")
+        Session.set(key, false)
+      else
+        $(".detalhesButton", blockquote).html("Esconder Detalhes")
+        $(".detalhes", blockquote).removeClass("hidden")
+        Session.set(key, true)
   })
 
   Meteor.startup( () ->
