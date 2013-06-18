@@ -49,6 +49,10 @@ div.popover {
   left: auto !important;
 }
 
+blockquote {
+  margin-bottom: 50px;
+}
+
 blockquote small {
   display: inline;
 }
