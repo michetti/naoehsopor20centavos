@@ -94,6 +94,18 @@
 <template name="item">
   <blockquote data-ideia-id="{{_id}}">
     <p>{{titulo}}</p>
+
+    {{# if descricao or sugestao}}
+      <br/>
+    {{/if}}
+
+    {{#if descricao}}
+      <div><strong>Descrição: </strong>{{descricao}}</div>
+    {{/if}}
+
+    {{#if sugestao}}
+      <div><strong>Sugestão: </strong>{{sugestao}}</div>
+    {{/if}}
     <small><span class="badge badge-success">{{votos}}</span>&nbsp;<a href="#" class="votarIdeia">Votar!</a></small>
     <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com/{{slug titulo}}" data-send="false" data-width="450" data-show-faces="false"></div>
   </blockquote>

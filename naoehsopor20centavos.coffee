@@ -20,25 +20,10 @@ if Meteor.isClient
   }
 
   Template.item.rendered = () ->
-    html = ""
-
-    if this.data.descricao
-      html += "<strong>Descrição:</strong><p>#{this.data.descricao}</p>"
-
-    if this.data.sugestao
-      html += "<br/>" if this.data.descricao
-      html += "<strong>Sugestão:</strong><p>#{this.data.sugestao}</p>"
-
     blockquote = $("blockquote[data-ideia-id='#{this.data._id}']")
 
-    blockquote.popover({
-      placement: "top",
-      trigger: "hover",
-      html: true,
-      content: html
-    })
-
     blockquote.yellowFade()
+
     try
       FB.XFBML.parse(blockquote.get(0))
     catch e
