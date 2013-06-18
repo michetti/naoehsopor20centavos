@@ -38,8 +38,7 @@ if Meteor.isClient
        Itens.update(this._id, {$inc: {votos: 1}})
        Session.set(this._id,"clicked")
      else
-       alert "Apenas 1 voto por proposta é aceito"
-         
+       alert "Apenas 1 voto por proposta é aceito"         
   })
 
   Meteor.startup( () ->
