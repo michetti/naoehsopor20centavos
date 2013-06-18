@@ -17,7 +17,7 @@ body {
 }
 .carousel img {
   position: absolute;
-  top: -780px;
+  top: -500px;
   left: 0;
   min-width: 1980px;
 }
@@ -38,15 +38,6 @@ body {
 }
 .carousel-caption .btn {
   margin-top: 10px;
-}
-
-blockquote p:hover {
-  cursor: pointer;
-}
-
-div.popover {
-  position: absolute;
-  left: auto !important;
 }
 
 blockquote {

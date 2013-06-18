@@ -9,10 +9,6 @@
   <!--[if lt IE 9]>
     <script src="html5shiv.js"></script>
   <![endif]-->
-
-  <script>
-    new GA('UA-41827878-1');
-  </script>
 </head>
 
 <body>
@@ -20,7 +16,7 @@
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
       <div class="item active">
-        <img src="congresso.jpg" alt="">
+        <img src="congresso2.jpg" alt="">
         <div class="container">
           <div class="carousel-caption">
             <h1>Não é só por R$ 0,20 !</h1>
@@ -40,6 +36,7 @@
   </div><!-- /.carousel -->
 
   <div class="container">
+    <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com" data-send="false" data-width="450" data-show-faces="true"></div>
 
     <div id="ideias" class="row-fluid marketing">
       {{> itens}}
@@ -82,7 +79,7 @@
     </div>
   </div>
 
-  <div id="fb-root"></div>
+  {{> setup}}
 </body>
 
 <template name="itens">
@@ -113,4 +110,8 @@
     <small><span class="badge badge-success">{{votos}}</span>&nbsp;<a href="#" class="votarIdeia">Votar!</a></small>
     <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com/{{slug titulo}}" data-send="false" data-width="450" data-show-faces="false"></div>
   </blockquote>
+</template>
+
+<template name="setup">
+  <div id="fb-root"></div>
 </template>
