@@ -1,96 +1,71 @@
 body {
-  padding-bottom: 40px;
+  padding-top: 10px;
+  padding-bottom: 60px;
 }
 
-/* Carousel base class */
-.carousel {
-  margin-bottom: 60px;
+/* Custom container */
+.container {
+  margin: 0 auto;
+}
+.container > hr {
+  margin: 10px 0;
 }
 
-.carousel .container {
-  position: relative;
-  z-index: 9;
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 30px 0;
+  text-align: center;
 }
-
-.carousel .item {
-  height: 500px;
+.jumbotron h1 {
+  font-size: 100px;
+  line-height: 1;
 }
-.carousel img {
-  position: absolute;
-  top: -500px;
-  left: 0;
-  min-width: 1980px;
-}
-
-.carousel-caption {
-  background-color: transparent;
-  position: static;
-  max-width: 550px;
-  padding: 0 20px;
-  margin-top: 200px;
-}
-.carousel-caption h1,
-.carousel-caption .lead {
-  margin: 0;
+.jumbotron .lead {
+  font-size: 24px;
   line-height: 1.25;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.4);
 }
-.carousel-caption .btn {
-  margin-top: 10px;
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 20px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
 }
 
 blockquote {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  min-height: 25px;
 }
 
-blockquote small {
-  display: inline;
+blockquote a {
+  color: black;
 }
 
-div.fb-like {
-  top: 10px;
-  left: 15px;
+blockquote a:hover {
+  color: black;
+  font-size: 1.1em;
+  text-decoration: none;
 }
 
-@media (max-width: 979px) {
-  .carousel .item {
-    height: 500px;
-  }
-  .carousel img {
-    top: 0px;
-    min-width: 979px;
-    height: 500px;
-  }
+blockquote a span {
+  padding-left: 25px;
+  min-width: 80px;
+  text-align: right;
 }
 
-@media (max-width: 767px) {
-  .carousel {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-  .carousel .container {
+blockquote hr {
+  margin: 0;
+}
 
-  }
-  .carousel .item {
-    height: 300px;
-  }
-  .carousel img {
-    top: 0px;
-    left: 0;
-    min-width: 797px;
-    height: 300px;
-  }
-  .carousel-caption {
-    width: 65%;
-    padding: 0 70px;
-    margin-top: 100px;
-  }
-  .carousel-caption h1 {
-    font-size: 30px;
-  }
-  .carousel-caption .lead,
-  .carousel-caption .btn {
-    font-size: 18px;
-  }
+.facebook {
+  height: 40px;
+}
+
+#ideias {
+  margin: 0;
 }

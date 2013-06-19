@@ -14,27 +14,35 @@
 
 <body>
 
-  <div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="congresso2.jpg" alt="">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Não é só por R$ 0,20 !</h1>
-            <p class="lead">Então pelo que é? Vamos definir juntos!</p>
-            <p class="lead">Vote! Compartilhe!</p>
-            <a class="btn btn-large btn-success" href="#suaIdeiaModal" data-toggle="modal">Dê a sua idéia</a>
-          </div>
-        </div>
-      </div>
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <h1>Não é só por R$&nbsp;0,20!</h1>
+      <p class="lead">Então pelo que é? Vamos definir juntos! Vote! Compartilhe!</p>
+      <a class="btn btn-large btn-success" href="#suaIdeiaModal" data-toggle="modal">Pelo que é?</a>
     </div>
-  </div><!-- /.carousel -->
 
-  <div class="container">
-    <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com" data-send="false" data-width="450" data-show-faces="true"></div>
+    <div class="clearfix"></div>
+
+    <div class="facebook">
+      <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com" data-send="false" data-width="450" data-show-faces="false"></div>
+    </div>
 
     <div id="ideias" class="row-fluid marketing">
-      {{> itens}}
+      <div class="span6">
+        <header>
+          <h3>Propostas</h3>
+        </header>
+
+        {{> itens}}
+      </div>
+
+      <div class="span6">
+        <header>
+          <h3>Trending <small>votos na última hora</small></h3>
+        </header>
+
+        {{> trends}}
+      </div>
     </div>
 
     <hr>
@@ -59,14 +67,7 @@
       <form id="formNovaIdeia" name="formNovaIdeia">
         <fieldset>
           <label>É pelo quê, então?</label>
-          <input id="titulo" name="titulo" type="text" class="input-block-level" placeholder="Sou contra a PEC 37">
-
-          <label>Explique um pouco melhor!<label>
-          <textarea id="descricao" name="descricao" class="input-block-level" rows="4" placeholder="Porque somos o único caso de democracia que condenados por corrupção legislam contra os juízes que os condenaram"></textarea>
-
-          <label>E o que precisa ser feito para isso?<label>
-          <textarea id="sugestao" name="sugestao" class="input-block-level" rows="4" placeholder="Ir as ruas no dia da votação e deixar claro para os governates nossa opinião"></textarea>
-
+          <textarea id="titulo" name="titulo" type="text" class="input-block-level" placeholder="Sou contra a PEC 37"></textarea>
         </fieldset>
       </form>
     </div>
@@ -85,27 +86,39 @@
   {{/each}}
 </template>
 
+<template name="trends">
+  {{#each itens}}
+    {{> trend}}
+  {{/each}}
+</template>
+
 <template name="item">
-  <hr>
   <blockquote data-ideia-id="{{_id}}">
-    <p>{{titulo}}</p>
-
-    {{# if descricao or sugestao}}
-      <a href="#" class="detalhesButton">Mostrar Detalhes</a>
-      <br/>
-
-      <div class="hidden detalhes">
-        {{#if descricao}}
-          <div><strong>Descrição: </strong>{{descricao}}</div>
-        {{/if}}
-
-        {{#if sugestao}}
-          <div><strong>Sugestão: </strong>{{sugestao}}</div>
-        {{/if}}
+    <div class="row-fluid">
+      <div class="span10">
+        <p><a href="#" class="votarIdeia">{{titulo}}</a></p>
       </div>
-    {{/if}}
-    <small><span class="badge badge-success">{{votos}}</span>&nbsp;<a href="#" class="votarIdeia">Votar!</a></small>
-    <div class="fb-like" data-href="http://naoehsopor20centavos.meteor.com/{{slug titulo}}" data-send="false" data-width="450" data-show-faces="false"></div>
+      <div class="span2">
+        <a href="#" class="votarIdeia pull-right"><span class="badge badge-success">{{votos}}&nbsp;Votar</span></a>
+      </div>
+    </div>
+
+    <hr>
+  </blockquote>
+</template>
+
+<template name="trend">
+  <blockquote data-ideia-id="{{_id}}">
+    <div class="row-fluid">
+      <div class="span10">
+        <p><a href="#" class="votarIdeia">{{titulo}}</a></p>
+      </div>
+      <div class="span2">
+        <a href="#" class="votarIdeia pull-right"><span class="badge badge-success">{{trending}}&nbsp;Votar</span></a>
+      </div>
+    </div>
+
+    <hr>
   </blockquote>
 </template>
 
